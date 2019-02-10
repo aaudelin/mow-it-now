@@ -1,5 +1,5 @@
 package models.entities.field;
 
-public class Garden {
+public class Garden extends AField {
 
 }

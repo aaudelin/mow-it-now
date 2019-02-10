@@ -1,6 +1,6 @@
 package models.entities.mower;
 
-public class AutomaticMower implements IMower {
+public class AutomaticMower extends AMower {
 	
 	public AutomaticMower() {
 		

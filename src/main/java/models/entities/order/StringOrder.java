@@ -1,6 +1,6 @@
 package models.entities.order;
 
-public class StringOrder implements IOrder {
+public class StringOrder extends AOrder {
 
 	private char action;
 
@@ -10,5 +10,11 @@ public class StringOrder implements IOrder {
 
 	public void setAction(char action) {
 		this.action = action;
+	}
+
+	@Override
+	public boolean isValidOrder() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
