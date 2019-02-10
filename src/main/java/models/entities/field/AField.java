@@ -1,16 +1,34 @@
 package models.entities.field;
 
-import models.entities.coordinates.APosition;
+import models.entities.position.APosition;
 
 public abstract class AField {
 	
-	Integer maxXCoordinate = null;
+	int maxXCoordinate = 0;
 	
-	Integer maxYCoordinate = null;
+	int maxYCoordinate = 0;
 	
 	public boolean isPositionIncluded(APosition position) {
 		return false;
 		
 	}
+
+	public Integer getMaxXCoordinate() {
+		return maxXCoordinate;
+	}
+
+	public void setMaxXCoordinate(Integer maxXCoordinate) {
+		this.maxXCoordinate = maxXCoordinate;
+	}
+
+	public Integer getMaxYCoordinate() {
+		return maxYCoordinate;
+	}
+
+	public void setMaxYCoordinate(Integer maxYCoordinate) {
+		this.maxYCoordinate = maxYCoordinate;
+	}
+	
+	
 
 }

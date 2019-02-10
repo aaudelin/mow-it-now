@@ -1,4 +1,4 @@
-package models.entities.coordinates;
+package models.entities.position;
 
 public abstract class APosition {
 	
