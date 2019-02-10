@@ -12,7 +12,6 @@ public class AutomaticMower extends AMower {
 		this.position = pPosition;
 		this.field = pField;
 		this.orders = pOrders;
-		
 	}
 
 	@Override
@@ -21,8 +20,7 @@ public class AutomaticMower extends AMower {
 		
 	}
 
-	@Override
-	public APosition computeNextPosition() {
+	private APosition computeNextPosition() {
 		// TODO Auto-generated method stub
 		return null;
 	}

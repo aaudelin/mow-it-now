@@ -15,8 +15,6 @@ public abstract class AMower {
 	public List<AOrder> orders = null;
 	
 	public abstract void move();
-	
-	public abstract APosition computeNextPosition();
 
 	public APosition getPosition() {
 		return position;
