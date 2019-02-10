@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import exceptions.MissingArgumentException;
 
-public class MowerMain {
+public class AutomaticMowerMain {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
@@ -19,8 +19,7 @@ public class MowerMain {
 		} catch (IOException exception) {
 			System.out.println("Impossible to read file from path : " + filePath);
 			throw exception;
-		}
-		
+		}		
 		// Begin automatic mower program for a garden
 	}
 
