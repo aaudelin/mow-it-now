@@ -1,4 +1,4 @@
-package models.entities.order;
+package model.entity.order;
 
 public abstract class AOrder {
 	private char action;

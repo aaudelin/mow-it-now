@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 
-import exceptions.MissingArgumentException;
+import exception.MissingArgumentException;
 
 public class AutomaticMowerMainTest {
 

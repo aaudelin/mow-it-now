@@ -1,10 +1,10 @@
-package models.entities.mower;
+package model.entity.mower;
 
 import java.util.List;
 
-import models.entities.field.AField;
-import models.entities.order.AOrder;
-import models.entities.position.APosition;
+import model.entity.field.AField;
+import model.entity.order.AOrder;
+import model.entity.position.APosition;
 
 public class AutomaticMower extends AMower {
 	

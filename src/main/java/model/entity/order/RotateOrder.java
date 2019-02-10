@@ -1,11 +1,10 @@
-package models.entities.order;
+package model.entity.order;
 
-public class MoveOrder extends AOrder {
+public class RotateOrder extends AOrder {
 
 	@Override
 	public boolean isValidOrder() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 }

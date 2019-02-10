@@ -1,4 +1,4 @@
-package helpers.factory;
+package helper.factory;
 
 public class MowerFactory {
 

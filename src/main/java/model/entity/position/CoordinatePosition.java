@@ -1,6 +1,6 @@
-package models.entities.position;
+package model.entity.position;
 
-import models.entities.order.AOrder;
+import model.entity.order.AOrder;
 
 public class CoordinatePosition extends APosition {
 

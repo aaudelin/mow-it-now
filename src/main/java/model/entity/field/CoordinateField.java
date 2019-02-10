@@ -1,6 +1,6 @@
-package models.entities.field;
+package model.entity.field;
 
-import models.entities.position.APosition;
+import model.entity.position.APosition;
 
 public class CoordinateField extends AField {
 
