@@ -15,9 +15,9 @@ public class OrderFactory {
 		List<AOrder> orders = new ArrayList<AOrder>();
 		for (char orderChar : order.toCharArray()) {
 			if (EAvailableActions.isMovement(orderChar)) {
-				orders.add(new MoveOrder());
+				orders.add(new MoveOrder(orderChar));
 			} else if (EAvailableActions.isRotation(orderChar)) {
-				orders.add(new RotateOrder());
+				orders.add(new RotateOrder(orderChar));
 			} else {
 				throw new OrderException("Impossible to save all orders : action invalid " + orderChar);
 			}
