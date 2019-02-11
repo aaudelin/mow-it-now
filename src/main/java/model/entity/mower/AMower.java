@@ -2,19 +2,20 @@ package model.entity.mower;
 
 import java.util.List;
 
+import exception.EntityException;
 import model.entity.field.AField;
 import model.entity.order.AOrder;
 import model.entity.position.APosition;
 
 public abstract class AMower {
-	
+
 	public APosition position = null;
-	
+
 	public AField field = null;
-	
+
 	public List<AOrder> orders = null;
-	
-	public abstract void move();
+
+	public abstract void move() throws EntityException;
 
 	public APosition getPosition() {
 		return position;
@@ -39,7 +40,5 @@ public abstract class AMower {
 	public void setOrders(List<AOrder> orders) {
 		this.orders = orders;
 	}
-	
-	
 
 }

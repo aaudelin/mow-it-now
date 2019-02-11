@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.CoordinateFileReadException;
-import exception.MissingArgumentException;
 import exception.EntityException;
+import exception.MissingArgumentException;
 import helper.service.CoordinateFileReaderService;
 import model.entity.mower.AMower;
 
@@ -28,7 +28,7 @@ public class AutomaticMowerMain {
 			String lineI;
 			String lineJ;
 			while ((lineI = br.readLine()) != null && (lineJ = br.readLine()) != null) {
-				AMower mower = CoordinateFileReaderService.getInstance().createAutomaticMower(field, lineI, lineJ);
+				AMower mower = CoordinateFileReaderService.getInstance().createMower(field, lineI, lineJ);
 				mowers.add(mower);
 			}
 		} catch (IOException exception) {
@@ -41,7 +41,16 @@ public class AutomaticMowerMain {
 			System.out.println("Impossible to create one of the object for file : " + filePath);
 			throw exception;
 		}
+
 		// Begin automatic mower program for a garden
+		mowers.stream().forEach((mower) -> {
+			try {
+				mower.move();
+			} catch (EntityException exception) {
+				System.out.println("Impossible to move mower : " + mower);
+				exception.printStackTrace();
+			}
+		});
 	}
 
 }

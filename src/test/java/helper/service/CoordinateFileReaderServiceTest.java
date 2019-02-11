@@ -9,6 +9,8 @@ import org.junit.Test;
 import exception.CoordinateFileReadException;
 import model.entity.field.AField;
 import model.entity.field.CoordinateField;
+import model.entity.mower.AMower;
+import model.entity.mower.AutomaticMower;
 import model.entity.order.AOrder;
 import model.entity.order.MoveOrder;
 import model.entity.order.RotateOrder;
@@ -50,6 +52,12 @@ public class CoordinateFileReaderServiceTest {
 		assertTrue(orders.get(0) instanceof RotateOrder);
 		assertTrue(orders.get(1) instanceof MoveOrder);
 		assertTrue(orders.get(2) instanceof RotateOrder);
+	}
+
+	@Test
+	public void testMower() throws Exception {
+		AMower mower = CoordinateFileReaderService.getInstance().createMower("8 15", "1 15 S", "DAG");
+		assertTrue(mower instanceof AutomaticMower);
 	}
 
 }

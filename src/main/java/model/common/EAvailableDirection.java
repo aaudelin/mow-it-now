@@ -31,7 +31,15 @@ public enum EAvailableDirection {
 			}
 		}
 		return false;
+	}
 
+	public static EAvailableDirection createFromDirection(char direction) {
+		for (EAvailableDirection validDirection : EAvailableDirection.values()) {
+			if (validDirection.getDirection() == direction) {
+				return validDirection;
+			}
+		}
+		return EAvailableDirection.DIRECTION_NORTH;
 	}
 
 }

@@ -77,7 +77,7 @@ public class CoordinateFileReaderService {
 
 	}
 
-	public AMower createAutomaticMower(String pField, String pPosition, String pOrders)
+	public AMower createMower(String pField, String pPosition, String pOrders)
 			throws CoordinateFileReadException, EntityException {
 		AField field = this.createField(pField);
 		APosition position = this.createPosition(pPosition);
