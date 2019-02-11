@@ -1,11 +1,14 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import exception.CoordinateFileReadException;
 import exception.MissingArgumentException;
+import exception.ObjectException;
 import helper.service.CoordinateFileReaderService;
-import model.entity.field.AField;
+import model.entity.mower.AMower;
 
 public class AutomaticMowerMain {
 
@@ -16,14 +19,26 @@ public class AutomaticMowerMain {
 		String filePath = args[0];
 
 		// Read input file to load field, mower and orders
-		AField field;
+		List<AMower> mowers = new ArrayList<AMower>();
 		try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-			field = CoordinateFileReaderService.getInstance().createField(br.readLine());
+			// Read field
+			String field = br.readLine();
+
+			// Read mowers
+			String lineI;
+			String lineJ;
+			while ((lineI = br.readLine()) != null && (lineJ = br.readLine()) != null) {
+				AMower mower = CoordinateFileReaderService.getInstance().createMower(field, lineI, lineJ);
+				mowers.add(mower);
+			}
 		} catch (IOException exception) {
 			System.out.println("Impossible to read file from path : " + filePath);
 			throw exception;
 		} catch (CoordinateFileReadException exception) {
 			System.out.println("Overall file format exception for file : " + filePath);
+			throw exception;
+		} catch (ObjectException exception) {
+			System.out.println("Impossible to create one of the object for file : " + filePath);
 			throw exception;
 		}
 		// Begin automatic mower program for a garden
