@@ -8,6 +8,7 @@ import exception.CoordinateFileReadException;
 import exception.EntityException;
 import exception.MissingArgumentException;
 import helper.service.CoordinateFileReaderService;
+import helper.service.MowerFileWriter;
 import model.entity.mower.AMower;
 
 public class AutomaticMowerMain {
@@ -48,9 +49,14 @@ public class AutomaticMowerMain {
 				mower.move();
 			} catch (EntityException exception) {
 				System.out.println("Impossible to move mower : " + mower);
+				mowers.remove(mower);
 				exception.printStackTrace();
 			}
 		});
+
+		// Write in sysout and output file
+		MowerFileWriter.getInstance().writeMowersToFile(mowers, filePath + "-output");
+
 	}
 
 }

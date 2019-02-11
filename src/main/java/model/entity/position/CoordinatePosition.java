@@ -5,6 +5,7 @@ import java.util.Map;
 
 import exception.PositionException;
 import helper.factory.PositionFactory;
+import helper.service.CoordinateFileReaderService;
 import model.common.EAvailableActions;
 import model.common.EAvailableDirection;
 import model.entity.field.AField;
@@ -92,6 +93,17 @@ public class CoordinatePosition extends APosition {
 			direction = mapRight.get(EAvailableDirection.createFromDirection(this.getDirection()));
 		}
 		return direction;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(this.xCoordinate);
+		builder.append(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
+		builder.append(this.yCoordinate);
+		builder.append(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
+		builder.append(this.direction);
+		return builder.toString();
 	}
 
 	public char getDirection() {

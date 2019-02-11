@@ -23,7 +23,8 @@ public class AutomaticMowerMainTest {
 	@Test
 	public void testMainValidFile() throws Exception {
 		// Checks that no argument provide an exception
-		String[] arguments = { "/invalid/file/path" };
+		String testPathResource = System.getProperty("user.dir") + "/src/test/resources/instructions-file";
+		String[] arguments = { testPathResource };
 		AutomaticMowerMain.main(arguments);
 	}
 
