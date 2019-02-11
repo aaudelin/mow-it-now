@@ -6,7 +6,7 @@ import java.util.List;
 
 import exception.CoordinateFileReadException;
 import exception.MissingArgumentException;
-import exception.ObjectException;
+import exception.EntityException;
 import helper.service.CoordinateFileReaderService;
 import model.entity.mower.AMower;
 
@@ -37,7 +37,7 @@ public class AutomaticMowerMain {
 		} catch (CoordinateFileReadException exception) {
 			System.out.println("Overall file format exception for file : " + filePath);
 			throw exception;
-		} catch (ObjectException exception) {
+		} catch (EntityException exception) {
 			System.out.println("Impossible to create one of the object for file : " + filePath);
 			throw exception;
 		}

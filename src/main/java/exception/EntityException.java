@@ -1,10 +1,10 @@
 package exception;
 
-public class ObjectException extends Exception {
+public class EntityException extends Exception {
 
 	private static final long serialVersionUID = -3749007226571664192L;
 
-	public ObjectException(String message) {
+	public EntityException(String message) {
 		super(message);
 	}
 }

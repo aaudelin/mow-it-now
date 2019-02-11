@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import exception.CoordinateFileReadException;
-import exception.ObjectException;
+import exception.EntityException;
 import helper.factory.FieldFactory;
 import helper.factory.MowerFactory;
 import helper.factory.OrderFactory;
@@ -44,7 +44,7 @@ public class CoordinateFileReaderService {
 
 	}
 
-	public APosition createPosition(String position) throws CoordinateFileReadException, ObjectException {
+	public APosition createPosition(String position) throws CoordinateFileReadException, EntityException {
 		String[] positionInfos = position.split(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
 
 		if (positionInfos.length != 3) {
@@ -66,7 +66,7 @@ public class CoordinateFileReaderService {
 
 	}
 
-	public List<AOrder> createOrders(String order) throws CoordinateFileReadException, ObjectException {
+	public List<AOrder> createOrders(String order) throws CoordinateFileReadException, EntityException {
 		String[] orders = order.split(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
 
 		if (orders.length != 1) {
@@ -78,7 +78,7 @@ public class CoordinateFileReaderService {
 	}
 
 	public AMower createAutomaticMower(String pField, String pPosition, String pOrders)
-			throws CoordinateFileReadException, ObjectException {
+			throws CoordinateFileReadException, EntityException {
 		AField field = this.createField(pField);
 		APosition position = this.createPosition(pPosition);
 		List<AOrder> orders = this.createOrders(pOrders);
