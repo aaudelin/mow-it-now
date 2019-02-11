@@ -28,7 +28,7 @@ public class AutomaticMowerMain {
 			String lineI;
 			String lineJ;
 			while ((lineI = br.readLine()) != null && (lineJ = br.readLine()) != null) {
-				AMower mower = CoordinateFileReaderService.getInstance().createMower(field, lineI, lineJ);
+				AMower mower = CoordinateFileReaderService.getInstance().createAutomaticMower(field, lineI, lineJ);
 				mowers.add(mower);
 			}
 		} catch (IOException exception) {

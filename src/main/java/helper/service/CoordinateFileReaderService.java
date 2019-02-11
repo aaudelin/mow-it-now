@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 import exception.CoordinateFileReadException;
 import exception.ObjectException;
 import helper.factory.FieldFactory;
+import helper.factory.MowerFactory;
 import helper.factory.OrderFactory;
 import helper.factory.PositionFactory;
 import model.entity.field.AField;
 import model.entity.mower.AMower;
-import model.entity.mower.AutomaticMower;
 import model.entity.order.AOrder;
 import model.entity.position.APosition;
 
@@ -77,10 +77,13 @@ public class CoordinateFileReaderService {
 
 	}
 
-	public AMower createMower(String field, String position, String orders)
+	public AMower createAutomaticMower(String pField, String pPosition, String pOrders)
 			throws CoordinateFileReadException, ObjectException {
-		// Call different creators
-		return new AutomaticMower(positionRead, null, null);
+		AField field = this.createField(pField);
+		APosition position = this.createPosition(pPosition);
+		List<AOrder> orders = this.createOrders(pOrders);
+
+		return MowerFactory.createAutomaticMower(field, position, orders);
 	}
 
 }
