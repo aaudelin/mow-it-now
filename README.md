@@ -15,4 +15,17 @@ Go to the generated JAR file :
 The generated file is avalable in `absolute_file_path` with -output suffix 
 
 ## Example
+Instruction File :
+`5 5
+1 2 N
+GAGAGAGAA
+3 3 E
+AADAADADDA`
+
+Strandard output result :
+`java -jar mow-it-now-0.0.1-SNAPSHOT.jar /tmp/instructions-file
+---- RESULT : Output mowers final position ---
+1 3 N
+5 1 E`
+
 
