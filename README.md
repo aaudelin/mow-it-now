@@ -14,10 +14,10 @@ mvn install
 Go to the generated JAR file :
 `java -jar mow-it-now-{version}.jar {absolute_file_path}`
 
-The generated file is avalable in `absolute_file_path` with -output suffix 
+The output file is available in `absolute_file_path` with `-output` suffix 
 
 ## Example
-Instruction File :
+Instruction file :
 ```bash
 5 5
 1 2 N
@@ -26,7 +26,7 @@ GAGAGAGAA
 AADAADADDA
 ```
 
-Strandard output result :
+Standard output result :
 ```bash
 java -jar mow-it-now-0.0.1-SNAPSHOT.jar /tmp/instructions-file
 ---- RESULT : Output mowers final position ---
