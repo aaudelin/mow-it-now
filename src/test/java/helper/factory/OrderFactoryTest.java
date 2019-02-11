@@ -33,6 +33,7 @@ public class OrderFactoryTest {
 		builder.append(orderMove);
 		builder.append(orderRotateLeft);
 		builder.append(orderRotateRight);
+
 		List<AOrder> orders = OrderFactory.createOrderList(builder.toString());
 
 		assertEquals(3, orders.size());
