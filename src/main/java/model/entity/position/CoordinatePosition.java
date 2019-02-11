@@ -1,5 +1,6 @@
 package model.entity.position;
 
+import model.entity.field.AField;
 import model.entity.order.AOrder;
 
 public class CoordinatePosition extends APosition {
@@ -9,14 +10,18 @@ public class CoordinatePosition extends APosition {
 	int xCoordinate = 0;
 
 	int yCoordinate = 0;
-	
 
 	@Override
 	public APosition computePositionFromOrder(AOrder order) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public boolean isIncludedInField(AField field) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	public char getDirection() {
 		return direction;
@@ -41,5 +46,4 @@ public class CoordinatePosition extends APosition {
 	public void setyCoordinate(int yCoordinate) {
 		this.yCoordinate = yCoordinate;
 	}
-
 }

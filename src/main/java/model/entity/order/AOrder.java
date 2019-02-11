@@ -10,7 +10,7 @@ public abstract class AOrder {
 	public void setAction(char action) {
 		this.action = action;
 	}
-	
+
 	public abstract boolean isValidOrder();
 
 }
