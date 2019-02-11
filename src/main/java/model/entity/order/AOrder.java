@@ -1,5 +1,10 @@
 package model.entity.order;
 
+/**
+ * 
+ * @author aaudelin
+ *
+ */
 public abstract class AOrder {
 	private char action;
 
@@ -14,7 +19,4 @@ public abstract class AOrder {
 	public void setAction(char action) {
 		this.action = action;
 	}
-
-	public abstract boolean isValidOrder();
-
 }

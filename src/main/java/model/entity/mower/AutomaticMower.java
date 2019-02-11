@@ -7,6 +7,11 @@ import model.entity.field.AField;
 import model.entity.order.AOrder;
 import model.entity.position.APosition;
 
+/**
+ * 
+ * @author aaudelin
+ *
+ */
 public class AutomaticMower extends AMower {
 
 	public AutomaticMower(APosition pPosition, AField pField, List<AOrder> pOrders) {
@@ -25,6 +30,13 @@ public class AutomaticMower extends AMower {
 		}
 	}
 
+	/**
+	 * Use the position sensor to compute where the next position should be
+	 * 
+	 * @param order the order to treat
+	 * @return the estimated next position
+	 * @throws EntityException
+	 */
 	private APosition computeNextPosition(AOrder order) throws EntityException {
 		return this.position.computePositionFromOrder(order);
 	}

@@ -1,7 +1,10 @@
 package model.entity.field;
 
-import model.entity.position.APosition;
-
+/**
+ * 
+ * @author aaudelin
+ *
+ */
 public class CoordinateField extends AField {
 
 	int minXCoordinate = 0;
@@ -11,12 +14,6 @@ public class CoordinateField extends AField {
 	int maxXCoordinate = 0;
 
 	int maxYCoordinate = 0;
-
-	@Override
-	public boolean isPositionIncluded(APosition position) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	public int getMinXCoordinate() {
 		return minXCoordinate;

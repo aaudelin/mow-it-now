@@ -23,8 +23,8 @@ public class PositionFactoryTest {
 		CoordinatePosition position = PositionFactory.createCoordinatePosition(x, y, direction);
 
 		assertEquals(position.getDirection(), direction);
-		assertEquals(position.getxCoordinate(), x);
-		assertEquals(position.getyCoordinate(), y);
+		assertEquals(position.getXCoordinate(), x);
+		assertEquals(position.getYCoordinate(), y);
 	}
 
 }

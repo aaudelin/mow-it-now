@@ -11,8 +11,19 @@ import helper.service.CoordinateFileReaderService;
 import helper.service.MowerFileWriter;
 import model.entity.mower.AMower;
 
+/**
+ * 
+ * @author aaudelin
+ *
+ */
 public class AutomaticMowerMain {
 
+	/**
+	 * Execute all the mowers described in input file
+	 * 
+	 * @param args - first argument : input file name
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {
 			throw new MissingArgumentException("Missing file path or too much arguments provided");

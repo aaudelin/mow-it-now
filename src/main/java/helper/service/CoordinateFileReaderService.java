@@ -15,16 +15,35 @@ import model.entity.mower.AMower;
 import model.entity.order.AOrder;
 import model.entity.position.APosition;
 
+/**
+ * Reads a coordinate file type to create all coordinate types objects
+ * 
+ * @author aaudelin
+ *
+ */
 public class CoordinateFileReaderService {
 
+	/** Delimiter to read file infos */
 	public static final String FILE_FIELD_DELIMITER = " ";
 
 	private static CoordinateFileReaderService instance = new CoordinateFileReaderService();
 
+	/**
+	 * Retrieves the instance of the singleton
+	 * 
+	 * @return instance
+	 */
 	public static CoordinateFileReaderService getInstance() {
 		return instance;
 	}
 
+	/**
+	 * Create an according field according a string line
+	 * 
+	 * @param fieldInfos the input line
+	 * @return a new coordinate field
+	 * @throws CoordinateFileReadException
+	 */
 	public AField createField(String fieldInfos) throws CoordinateFileReadException {
 		String[] coordinates = fieldInfos.split(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
 		List<Integer> listCoordinates;
@@ -44,6 +63,14 @@ public class CoordinateFileReaderService {
 
 	}
 
+	/**
+	 * Create a position sensor according to a string line
+	 * 
+	 * @param position the input line
+	 * @return a new coordinate position
+	 * @throws CoordinateFileReadException
+	 * @throws EntityException
+	 */
 	public APosition createPosition(String position) throws CoordinateFileReadException, EntityException {
 		String[] positionInfos = position.split(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
 
@@ -66,6 +93,14 @@ public class CoordinateFileReaderService {
 
 	}
 
+	/**
+	 * Create a list of moving or rotating orders according to an input line
+	 * 
+	 * @param order the input line
+	 * @return a new list of orders
+	 * @throws CoordinateFileReadException
+	 * @throws EntityException
+	 */
 	public List<AOrder> createOrders(String order) throws CoordinateFileReadException, EntityException {
 		String[] orders = order.split(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
 
@@ -77,6 +112,16 @@ public class CoordinateFileReaderService {
 
 	}
 
+	/**
+	 * Create a mower by injecting all dependencies
+	 * 
+	 * @param pField    the field to mow
+	 * @param pPosition the current mower position
+	 * @param pOrders   the list of orders
+	 * @return a new automatic mower
+	 * @throws CoordinateFileReadException
+	 * @throws EntityException
+	 */
 	public AMower createMower(String pField, String pPosition, String pOrders)
 			throws CoordinateFileReadException, EntityException {
 		AField field = this.createField(pField);

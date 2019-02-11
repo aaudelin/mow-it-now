@@ -1,5 +1,11 @@
 package model.common;
 
+/**
+ * Describes all the coordinate directions available
+ * 
+ * @author aaudelin
+ *
+ */
 public enum EAvailableDirection {
 
 	DIRECTION_NORTH('N'),
@@ -24,6 +30,12 @@ public enum EAvailableDirection {
 		return direction;
 	}
 
+	/**
+	 * Checks if a char direction is valid
+	 * 
+	 * @param direction the direction to check
+	 * @return true if the direction is valid, false otherwise
+	 */
 	public static boolean isValidDirection(char direction) {
 		for (EAvailableDirection validDirection : EAvailableDirection.values()) {
 			if (validDirection.getDirection() == direction) {
@@ -33,7 +45,13 @@ public enum EAvailableDirection {
 		return false;
 	}
 
-	public static EAvailableDirection createFromDirection(char direction) {
+	/**
+	 * Get an EAvailableDirection according to the char direction
+	 * 
+	 * @param direction the direction
+	 * @return a EAvailableDirection constant
+	 */
+	public static EAvailableDirection getFromDirection(char direction) {
 		for (EAvailableDirection validDirection : EAvailableDirection.values()) {
 			if (validDirection.getDirection() == direction) {
 				return validDirection;

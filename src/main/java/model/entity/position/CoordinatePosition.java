@@ -5,7 +5,6 @@ import java.util.Map;
 
 import exception.PositionException;
 import helper.factory.PositionFactory;
-import helper.service.CoordinateFileReaderService;
 import model.common.EAvailableActions;
 import model.common.EAvailableDirection;
 import model.entity.field.AField;
@@ -14,7 +13,18 @@ import model.entity.order.AOrder;
 import model.entity.order.MoveOrder;
 import model.entity.order.RotateOrder;
 
+/**
+ * Sensor plugged to a mower that indicates and computes the position according
+ * to the field and the orders
+ * 
+ * Works with coordinate field
+ * 
+ * @author aaudelin
+ *
+ */
 public class CoordinatePosition extends APosition {
+
+	public static final String INFO_DELIMITER = " ";
 
 	char direction = '\u0000';
 
@@ -45,12 +55,19 @@ public class CoordinatePosition extends APosition {
 					"Invalid field type not handled by the position : " + field.getClass().getName());
 		}
 		CoordinateField cField = (CoordinateField) field;
-		return this.xCoordinate >= cField.getMinXCoordinate() && this.xCoordinate <= cField.getMaxXCoordinate()
-				&& this.yCoordinate >= cField.getMinYCoordinate() && this.yCoordinate <= cField.getMaxYCoordinate();
+		return this.xCoordinate >= cField.getMinXCoordinate() 
+				&& this.xCoordinate <= cField.getMaxXCoordinate()
+				&& this.yCoordinate >= cField.getMinYCoordinate() 
+				&& this.yCoordinate <= cField.getMaxYCoordinate();
 	}
 
+	/**
+	 * Computes a movement action to the x coordinate
+	 * 
+	 * @return the next x position
+	 */
 	private int moveXFromAction() {
-		EAvailableDirection direction = EAvailableDirection.createFromDirection(this.getDirection());
+		EAvailableDirection direction = EAvailableDirection.getFromDirection(this.getDirection());
 		if (EAvailableDirection.DIRECTION_WEST.equals(direction)) {
 			return this.xCoordinate - 1;
 		}
@@ -61,8 +78,13 @@ public class CoordinatePosition extends APosition {
 
 	}
 
+	/**
+	 * Computes a movement action to the y coordinate
+	 * 
+	 * @return the next y position
+	 */
 	private int moveYFromAction() {
-		EAvailableDirection direction = EAvailableDirection.createFromDirection(this.getDirection());
+		EAvailableDirection direction = EAvailableDirection.getFromDirection(this.getDirection());
 		if (EAvailableDirection.DIRECTION_NORTH.equals(direction)) {
 			return this.yCoordinate + 1;
 		}
@@ -73,6 +95,12 @@ public class CoordinatePosition extends APosition {
 
 	}
 
+	/**
+	 * Computes a rotation
+	 * 
+	 * @param action the rotation type
+	 * @return the next direction, focus on NORTH by default
+	 */
 	private EAvailableDirection rotateFromAction(char action) {
 		Map<EAvailableDirection, EAvailableDirection> mapLeft = new HashMap<EAvailableDirection, EAvailableDirection>();
 		mapLeft.put(EAvailableDirection.DIRECTION_NORTH, EAvailableDirection.DIRECTION_WEST);
@@ -88,9 +116,9 @@ public class CoordinatePosition extends APosition {
 
 		EAvailableDirection direction = EAvailableDirection.DIRECTION_NORTH;
 		if (action == EAvailableActions.ROTATE_LEFT.getAction()) {
-			direction = mapLeft.get(EAvailableDirection.createFromDirection(this.getDirection()));
+			direction = mapLeft.get(EAvailableDirection.getFromDirection(this.getDirection()));
 		} else if (action == EAvailableActions.ROTATE_RIGHT.getAction()) {
-			direction = mapRight.get(EAvailableDirection.createFromDirection(this.getDirection()));
+			direction = mapRight.get(EAvailableDirection.getFromDirection(this.getDirection()));
 		}
 		return direction;
 	}
@@ -99,9 +127,9 @@ public class CoordinatePosition extends APosition {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(this.xCoordinate);
-		builder.append(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
+		builder.append(INFO_DELIMITER);
 		builder.append(this.yCoordinate);
-		builder.append(CoordinateFileReaderService.FILE_FIELD_DELIMITER);
+		builder.append(INFO_DELIMITER);
 		builder.append(this.direction);
 		return builder.toString();
 	}
@@ -114,19 +142,19 @@ public class CoordinatePosition extends APosition {
 		this.direction = direction;
 	}
 
-	public int getxCoordinate() {
+	public int getXCoordinate() {
 		return xCoordinate;
 	}
 
-	public void setxCoordinate(int xCoordinate) {
+	public void setXCoordinate(int xCoordinate) {
 		this.xCoordinate = xCoordinate;
 	}
 
-	public int getyCoordinate() {
+	public int getYCoordinate() {
 		return yCoordinate;
 	}
 
-	public void setyCoordinate(int yCoordinate) {
+	public void setYCoordinate(int yCoordinate) {
 		this.yCoordinate = yCoordinate;
 	}
 }

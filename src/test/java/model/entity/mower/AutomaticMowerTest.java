@@ -38,12 +38,12 @@ public class AutomaticMowerTest {
 		AMower mower = CoordinateFileReaderService.getInstance().createMower("8 15", "1 15 S", "A");
 		CoordinatePosition position = (CoordinatePosition) mower.getPosition();
 		assertEquals('S', position.getDirection());
-		assertEquals(15, position.getyCoordinate());
+		assertEquals(15, position.getYCoordinate());
 
 		mower.move();
 		position = (CoordinatePosition) mower.getPosition();
 		assertEquals('S', position.getDirection());
-		assertEquals(14, position.getyCoordinate());
+		assertEquals(14, position.getYCoordinate());
 
 	}
 
@@ -52,12 +52,12 @@ public class AutomaticMowerTest {
 		AMower mower = CoordinateFileReaderService.getInstance().createMower("8 15", "1 15 E", "A");
 		CoordinatePosition position = (CoordinatePosition) mower.getPosition();
 		assertEquals('E', position.getDirection());
-		assertEquals(1, position.getxCoordinate());
+		assertEquals(1, position.getXCoordinate());
 
 		mower.move();
 		position = (CoordinatePosition) mower.getPosition();
 		assertEquals('E', position.getDirection());
-		assertEquals(2, position.getxCoordinate());
+		assertEquals(2, position.getXCoordinate());
 
 	}
 
@@ -66,12 +66,12 @@ public class AutomaticMowerTest {
 		AMower mower = CoordinateFileReaderService.getInstance().createMower("8 15", "1 15 N", "A");
 		CoordinatePosition position = (CoordinatePosition) mower.getPosition();
 		assertEquals('N', position.getDirection());
-		assertEquals(15, position.getyCoordinate());
+		assertEquals(15, position.getYCoordinate());
 
 		mower.move();
 		position = (CoordinatePosition) mower.getPosition();
 		assertEquals('N', position.getDirection());
-		assertEquals(15, position.getyCoordinate());
+		assertEquals(15, position.getYCoordinate());
 
 	}
 
@@ -82,8 +82,8 @@ public class AutomaticMowerTest {
 		mower.move();
 		CoordinatePosition position = (CoordinatePosition) mower.getPosition();
 		assertEquals('N', position.getDirection());
-		assertEquals(1, position.getxCoordinate());
-		assertEquals(3, position.getyCoordinate());
+		assertEquals(1, position.getXCoordinate());
+		assertEquals(3, position.getYCoordinate());
 
 	}
 
@@ -94,8 +94,8 @@ public class AutomaticMowerTest {
 		mower.move();
 		CoordinatePosition position = (CoordinatePosition) mower.getPosition();
 		assertEquals('E', position.getDirection());
-		assertEquals(5, position.getxCoordinate());
-		assertEquals(1, position.getyCoordinate());
+		assertEquals(5, position.getXCoordinate());
+		assertEquals(1, position.getYCoordinate());
 
 	}
 
