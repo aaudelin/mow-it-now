@@ -18,7 +18,10 @@ public class AutomaticMower extends AMower {
 	@Override
 	public void move() throws EntityException {
 		for (AOrder order : orders) {
-			this.setPosition(this.computeNextPosition(order));
+			APosition position = this.computeNextPosition(order);
+			if (position.isIncludedInField(this.getField())) {
+				this.setPosition(position);
+			}
 		}
 	}
 

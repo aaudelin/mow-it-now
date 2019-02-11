@@ -8,7 +8,9 @@ import helper.factory.PositionFactory;
 import model.common.EAvailableActions;
 import model.common.EAvailableDirection;
 import model.entity.field.AField;
+import model.entity.field.CoordinateField;
 import model.entity.order.AOrder;
+import model.entity.order.MoveOrder;
 import model.entity.order.RotateOrder;
 
 public class CoordinatePosition extends APosition {
@@ -26,13 +28,48 @@ public class CoordinatePosition extends APosition {
 			return PositionFactory.createCoordinatePosition(this.xCoordinate, this.yCoordinate,
 					direction.getDirection());
 		}
+
+		if (order instanceof MoveOrder) {
+			int x = this.moveXFromAction();
+			int y = this.moveYFromAction();
+			return PositionFactory.createCoordinatePosition(x, y, this.getDirection());
+		}
 		return null;
 	}
 
 	@Override
-	public boolean isIncludedInField(AField field) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isIncludedInField(AField field) throws PositionException {
+		if (!(field instanceof CoordinateField)) {
+			throw new PositionException(
+					"Invalid field type not handled by the position : " + field.getClass().getName());
+		}
+		CoordinateField cField = (CoordinateField) field;
+		return this.xCoordinate >= cField.getMinXCoordinate() && this.xCoordinate <= cField.getMaxXCoordinate()
+				&& this.yCoordinate >= cField.getMinYCoordinate() && this.yCoordinate <= cField.getMaxYCoordinate();
+	}
+
+	private int moveXFromAction() {
+		EAvailableDirection direction = EAvailableDirection.createFromDirection(this.getDirection());
+		if (EAvailableDirection.DIRECTION_WEST.equals(direction)) {
+			return this.xCoordinate - 1;
+		}
+		if (EAvailableDirection.DIRECTION_EAST.equals(direction)) {
+			return this.xCoordinate + 1;
+		}
+		return this.xCoordinate;
+
+	}
+
+	private int moveYFromAction() {
+		EAvailableDirection direction = EAvailableDirection.createFromDirection(this.getDirection());
+		if (EAvailableDirection.DIRECTION_NORTH.equals(direction)) {
+			return this.yCoordinate + 1;
+		}
+		if (EAvailableDirection.DIRECTION_SOUTH.equals(direction)) {
+			return this.yCoordinate - 1;
+		}
+		return this.yCoordinate;
+
 	}
 
 	private EAvailableDirection rotateFromAction(char action) {
